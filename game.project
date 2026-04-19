@@ -5,8 +5,8 @@ main_collection = /main/main.collectionc
 shared_state = 1
 
 [display]
-width = 960
-height = 640
+width = 720
+height = 360
 high_dpi = 1
 
 [android]
@@ -21,4 +21,9 @@ scale_mode = stretch
 
 [project]
 title = Desert_shooting_game
+
+[graphics]
+opengl_version_hint = 46
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
 
