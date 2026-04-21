@@ -1,0 +1,54 @@
+function init(self)
+	-- This is a system message that tells the engine to send input actions to this game object. 
+	-- The actions will arrive in this script component's on_input() function.
+	msg.post(".", "acquire_input_focus")
+
+	-- Globals, used in `update()` and `on_input`
+	self.moving = false
+	self.input = vmath.vector3() -- used in on_input 
+	self.dir = vmath.vector3(0, 1, 0) -- The real direction
+	self.speed = 60
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+-- `update` is called once for each frame, `dt` is the number of seconds elapsed 
+-- since the last call to the function
+function update(self, dt) 
+	-- Act when `on_input()` is collected
+	if self.moving then 
+		-- `go` is a module (think of it as a data type, like an array with built in methods), when calling it with out an argument,
+		-- it will get currnet object's position (you attached to what object? player? then it's player)
+		local pos = go.get_position() 
+		pos = pos + self.dir * self.speed * dt  -- create the new coordinates 
+		go.set_position(pos) -- you kinda teleport the player's object to `pos`
+	end
+	-- reset global input state
+	self.input.x = 0
+	self.input.y = 0
+	self.moving = false
+end
+
+-- `on_input()` is called every frame for all mapped input that is active, 
+-- `action` is a Lua table with details on the input.
+function on_input(self, action_id, action)
+	if action_id == hash("up") then
+		self.input.y = 1
+	elseif action_id == hash("down") then
+		self.input.y = -1
+	elseif action_id == hash("left") then
+		self.input.x = -1
+	elseif action_id == hash("right") then
+		self.input.x = 1
+	end
+
+	-- If the user presses any of the arrow keys, the input vector length will be non zero.
+	if vmath.length(self.input) > 0 then
+		self.moving = true
+
+		-- set the "REAL` dir to the value ofinput when normalized
+		self.dir = vmath.normalize(self.input) 
+	end
+end
