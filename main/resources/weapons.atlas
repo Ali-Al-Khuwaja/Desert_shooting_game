@@ -1,0 +1,19 @@
+animations {
+  id: "gun"
+  images {
+    image: "/assets/PNG/Weapons/Tiles/tile_0004.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_4
+  }
+  playback: PLAYBACK_NONE
+  fps: 1
+}
+animations {
+  id: "bullet"
+  images {
+    image: "/assets/PNG/Weapons/Tiles/tile_0023.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_4
+  }
+  playback: PLAYBACK_NONE
+  fps: 1
+}
+extrude_borders: 2
