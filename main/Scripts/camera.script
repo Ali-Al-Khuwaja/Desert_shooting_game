@@ -1,0 +1,9 @@
+function update(self, dt)
+	local camera_position = go.get_position()
+	local target_position = go.get_position("player")
+
+	local new_position = vmath.vector3(target_position.x, target_position.y, camera_position.z)
+	camera_position = vmath.lerp(0.03, camera_position, new_position)
+	go.set_position(camera_position)
+
+end
