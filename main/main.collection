@@ -10,6 +10,7 @@ embedded_instances {
 }
 embedded_instances {
   id: "player"
+  children: "weapon"
   data: "components {\n"
   "  id: \"player\"\n"
   "  component: \"/main/Scripts/player.script\"\n"
@@ -26,21 +27,6 @@ embedded_instances {
   "\"\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"weapon_sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"gun\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/main/resources/weapons.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 18.0\n"
-  "    y: -6.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
   "  id: \"bulletfactory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/objects/bullet.go\\\"\\n"
@@ -51,5 +37,52 @@ embedded_instances {
     x: 408.0
     y: 256.0
     z: 1.0
+  }
+}
+embedded_instances {
+  id: "camera"
+  data: "components {\n"
+  "  id: \"camera1\"\n"
+  "  component: \"/main/Scripts/camera.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"camera\"\n"
+  "  type: \"camera\"\n"
+  "  data: \"aspect_ratio: 1.0\\n"
+  "fov: 0.7854\\n"
+  "near_z: 0.1\\n"
+  "far_z: 1000.0\\n"
+  "orthographic_projection: 1\\n"
+  "orthographic_zoom: 2.0\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 471.0
+    y: 245.0
+    z: 600.0
+  }
+}
+embedded_instances {
+  id: "weapon"
+  data: "embedded_components {\n"
+  "  id: \"weapon_sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"gun\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 24.0\\n"
+  "  y: 24.0\\n"
+  "}\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/main/resources/weapons.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 18.0
+    y: -6.0
   }
 }
