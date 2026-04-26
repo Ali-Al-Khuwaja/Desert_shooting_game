@@ -24,6 +24,9 @@ title = Desert_shooting_game
 
 [graphics]
 opengl_version_hint = 46
-default_texture_min_filter = nearest
+default_texture_min_filter = linear
 default_texture_mag_filter = nearest
+
+[tilemap]
+max_tile_count = 4096
 
